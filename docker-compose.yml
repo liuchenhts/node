@@ -1,0 +1,19 @@
+version: '3'
+services:
+  node:
+    image: mcr.microsoft.com/devcontainers/typescript-node
+    container_name: node.local
+    working_dir: /development
+    volumes:
+      # share current project source code
+      - $HOME/Development/:/development
+      # share aws settings
+      - $HOME/.aws:/node/.aws:z
+      # share ssh settings
+      - ~/.ssh:/root/.ssh:z
+      # share Shell history persistence
+      - ~/.zsh_history:/root/.zsh_history:z
+      # Git config
+      - ~/.gitconfig:/root/.gitconfig:z
+    ports:
+      - 3000:3000
